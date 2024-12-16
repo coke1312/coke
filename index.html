@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mycommand.exe</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: #0f0;
+            font-family: "Courier New", Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        
+
+        .crt::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, rgba(0, 255, 0, 0.2) 0%, transparent 70%);
+            mix-blend-mode: screen;
+            z-index: 1;
+            pointer-events: none; /* Sprečava interakciju sa efektom */
+        }
+
+        .terminal-content {
+            position: relative;
+            font-size: 19px;
+            line-height: 1.5;
+            white-space: nowrap;
+            z-index: 2; /* Da tekst bude iznad gradient efekta */
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 25px;
+            background: #0f0;
+            animation: blink 0.8s step-start infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                background: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="crt">
+        <div class="terminal-content">
+            <span>xmodmap -e "keycode 51 = t"</span><span class="cursor"></span>
+        </div>
+    </div>
+</body>
+</html>
